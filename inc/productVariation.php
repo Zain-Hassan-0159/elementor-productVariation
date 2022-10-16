@@ -128,16 +128,6 @@ class productVariation_widget_elementore  extends \Elementor\Widget_Base {
         );
     
         $this->add_control(
-            'widget_title',
-            [
-                'label' => esc_html__( 'Title', 'product-variation' ),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__( 'Custom Neon Generator', 'product-variation' ),
-                'placeholder' => esc_html__( 'Type your title here', 'product-variation' ),
-            ]
-        );
-    
-        $this->add_control(
             'item_description',
             [
                 'label' => esc_html__( 'Description', 'product-variation' ),
@@ -152,59 +142,7 @@ class productVariation_widget_elementore  extends \Elementor\Widget_Base {
     
     
         $this->end_controls_section();
-    
-        $this->start_controls_section(
-            'Size_Control',
-            [
-                'label' => esc_html__( 'Size Control', 'product-variation' ),
-                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-            ]
-        );
-    
-        $repeater = new \Elementor\Repeater();
-    
-        $repeater->add_control(
-            'size_title', [
-                'label' => esc_html__( 'Title', 'product-variation' ),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'label_block' => true,
-            ]
-        );
-    
-        $repeater->add_control(
-            'size_price', [
-                'label' => esc_html__( 'Price', 'product-variation' ),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'label_block' => true,
-            ]
-        );
-    
-    
-        $this->add_control(
-            'Size_list',
-            [
-                'label' => esc_html__( 'Size Options', 'product-variation' ),
-                'type' => \Elementor\Controls_Manager::REPEATER,
-                'fields' => $repeater->get_controls(),
-                'default' => [
-                    [
-                        'size_title' => esc_html__( '30 inches (at widest point)', 'product-variation' ),
-                        'size_price' => esc_html__( '$510.00', 'product-variation' ),
-                    ],
-                    [
-                        'size_title' => esc_html__( '40 inches (at widest point)', 'product-variation' ),
-                        'size_price' => esc_html__( '$610.00', 'product-variation' ),
-                    ],
-                    [
-                        'size_title' => esc_html__( '50 inches (at widest point)', 'product-variation' ),
-                        'size_price' => esc_html__( '$710.00', 'product-variation' ),
-                    ],
-                ],
-                'title_field' => '{{{ size_title }}}',
-            ]
-        );
-        
-        $this->end_controls_section();
+
     
         $this->start_controls_section(
             'images_Control',
@@ -252,171 +190,42 @@ class productVariation_widget_elementore  extends \Elementor\Widget_Base {
         );
         
         $this->end_controls_section();
-        
     
         $this->start_controls_section(
-            'Mounting_options',
+            'fonts_Control',
             [
-                'label' => esc_html__( 'Mounting Options', 'product-variation' ),
+                'label' => esc_html__( 'Fonts Control', 'product-variation' ),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
     
         $repeater = new \Elementor\Repeater();
-    
-        $repeater->add_control(
-            'mounting_title', [
-                'label' => esc_html__( 'Title', 'product-variation' ),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'label_block' => true,
-            ]
-        );
 
-    
-        $this->add_control(
-            'Mounting_list',
-            [
-                'label' => esc_html__( 'Repeater List', 'product-variation' ),
-                'type' => \Elementor\Controls_Manager::REPEATER,
-                'fields' => $repeater->get_controls(),
-                'default' => [
-                    [
-                        'mounting_title' => esc_html__( 'Wall Mount (with Screws)', 'product-variation' ),
-                    ],
-                    [
-                        'mounting_title' => esc_html__( 'Cable', 'product-variation' ),
-                    ],
-                    [
-                        'mounting_title' => esc_html__( 'Chains', 'product-variation' ),
-                    ],
-                ],
-                'title_field' => '{{{ mounting_title }}}',
-            ]
-        );
-        
-        $this->end_controls_section();
-    
-        $this->start_controls_section(
-            'Jacket_Options',
-            [
-                'label' => esc_html__( 'Jacket Options', 'product-variation' ),
-                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-            ]
-        );
-    
-        $repeater = new \Elementor\Repeater();
-    
-        $repeater->add_control(
-            'jacket_title', [
-                'label' => esc_html__( 'Title', 'product-variation' ),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'label_block' => true,
-            ]
-        );
-    
+		$repeater->add_control(
+			'font_family_add',
+			[
+				'label' => esc_html__( 'Font Family', 'posttype-search-elementor' ),
+				'type' => \Elementor\Controls_Manager::FONT,
+                'selectors' => [
+					'{{WRAPPER}}' => 'font-family: {{VALUE}}',
+				],
 
+			]
+		);
+    
     
         $this->add_control(
-            'jacket_list',
+            'fonts_list',
             [
-                'label' => esc_html__( 'Repeater List', 'product-variation' ),
+                'label' => esc_html__( 'Fonts Options', 'product-variation' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
                     [
-                        'jacket_title' => esc_html__( 'White Jacket (White When Off)', 'product-variation' ),
-                    ],
-                    [
-                        'jacket_title' => esc_html__( 'Colored Jacket', 'product-variation' ),
+                        'font_family_add' => 'Charmonman',
                     ],
                 ],
-                'title_field' => '{{{ jacket_title }}}',
-            ]
-        );
-        
-        $this->end_controls_section();
-    
-        $this->start_controls_section(
-            'Backing_style_Options',
-            [
-                'label' => esc_html__( 'Backing style Options', 'product-variation' ),
-                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-            ]
-        );
-    
-        $repeater = new \Elementor\Repeater();
-    
-        $repeater->add_control(
-            'backing_title', [
-                'label' => esc_html__( 'Title', 'product-variation' ),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'label_block' => true,
-            ]
-        );
-    
-        $this->add_control(
-            'backing_list',
-            [
-                'label' => esc_html__( 'Backing List', 'product-variation' ),
-                'type' => \Elementor\Controls_Manager::REPEATER,
-                'fields' => $repeater->get_controls(),
-                'default' => [
-                    [
-                        'backing_title' => esc_html__( 'Clear Acrylic', 'product-variation' ),
-                    ],
-                    [
-                        'backing_title' => esc_html__( 'Gold Mirror', 'product-variation' ),
-                    ],
-                    [
-                        'backing_title' => esc_html__( 'Silver Mirror', 'product-variation' ),
-                    ],
-                    [
-                        'backing_title' => esc_html__( 'Black', 'product-variation' ),
-                    ],
-                    [
-                        'backing_title' => esc_html__( 'White', 'product-variation' ),
-                    ],
-                ],
-                'title_field' => '{{{ backing_title }}}',
-            ]
-        );
-        
-        $this->end_controls_section();
-    
-        $this->start_controls_section(
-            'Shape_Style_Options',
-            [
-                'label' => esc_html__( 'Shape Style Options', 'product-variation' ),
-                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-            ]
-        );
-    
-        $repeater = new \Elementor\Repeater();
-    
-        $repeater->add_control(
-            'shape_title', [
-                'label' => esc_html__( 'Title', 'product-variation' ),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'label_block' => true,
-            ]
-        );
-    
-    
-        $this->add_control(
-            'shape_list',
-            [
-                'label' => esc_html__( 'Shape List', 'product-variation' ),
-                'type' => \Elementor\Controls_Manager::REPEATER,
-                'fields' => $repeater->get_controls(),
-                'default' => [
-                    [
-                        'shape_title' => esc_html__( 'Cut to Shape', 'product-variation' ),
-                    ],
-                    [
-                        'shape_title' => esc_html__( 'Rectangle', 'product-variation' ),
-                    ],
-                ],
-                'title_field' => '{{{ shape_title }}}',
+                'title_field' => '{{{ font_family_add }}}',
             ]
         );
         
@@ -474,6 +283,53 @@ class productVariation_widget_elementore  extends \Elementor\Widget_Base {
         
         
         $this->end_controls_section();
+
+        $this->start_controls_section(
+			'email_and_general_settings',
+			[
+				'label' => esc_html__('Email and General Settings', 'posttype-search-elementor'),
+				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+
+        $this->add_control(
+			'submit_button',
+			[
+				'label' => esc_html__( 'Submit Button Text', 'posttype-search-elementor' ),
+                'label_block' => true,
+                'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Send to', 'posttype-search-elementor' ),
+				'placeholder' => esc_html__( 'Send to', 'posttype-search-elementor' ),
+			]
+		);
+
+        $this->add_control(
+			'email_to',
+			[
+				'label' => esc_html__( 'Email to', 'posttype-search-elementor' ),
+                'label_block' => true,
+                'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'iluvphotobooths@gmail.com', 'posttype-search-elementor' ),
+				'placeholder' => esc_html__( 'Type your title here', 'posttype-search-elementor' ),
+                'description' => esc_html__( 'If This field is empty then form will be submitted to the Admin Email.', 'posttype-search-elementor' ),
+			]
+		);
+
+        $this->add_control(
+			'email_from',
+			[
+				'label' => esc_html__( 'Email From', 'posttype-search-elementor' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'label_block' => true,
+				'default' => esc_html__( '', 'posttype-search-elementor' ),
+				'placeholder' => esc_html__( 'Type your title here', 'posttype-search-elementor' ),
+				'description' => esc_html__( 'If This field is empty then form will be submitted from the Clients Email. Enter the email address to sent it from custom email.', 'posttype-search-elementor' ),
+			]
+		);
+
+
+		$this->end_controls_section();
+
     
         $this->start_controls_section(
 			'ajax_search_styling',
@@ -488,6 +344,7 @@ class productVariation_widget_elementore  extends \Elementor\Widget_Base {
 			[
 				'label' => esc_html__( 'Font Family', 'posttype-search-elementor' ),
 				'type' => \Elementor\Controls_Manager::FONT,
+                'default' => 'Arial',
 				'selectors' => [
 					'{{WRAPPER}}, {{WRAPPER}} button, {{WRAPPER}} a, {{WRAPPER}}  select, {{WRAPPER}}  input, {{WRAPPER}}  label, {{WRAPPER}}  strong, {{WRAPPER}}  span, {{WRAPPER}}  p' => 'font-family: {{VALUE}}',
 				],
@@ -501,7 +358,7 @@ class productVariation_widget_elementore  extends \Elementor\Widget_Base {
 				'label'     => esc_html__('Side Bar Color', 'posttype-search-elementor'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .preview__data, {{WRAPPER}}  .quantity__minus, {{WRAPPER}}  .quantity__plus' => 'background-color: {{VALUE}} !important'
+					'{{WRAPPER}} .preview__data' => 'background-color: {{VALUE}} !important'
 				],
 			]
 		);
@@ -536,7 +393,6 @@ class productVariation_widget_elementore  extends \Elementor\Widget_Base {
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 
-   
 		?>
 
     <style>
@@ -615,6 +471,9 @@ class productVariation_widget_elementore  extends \Elementor\Widget_Base {
         button,
         input {
             line-height: normal;
+            width: -webkit-fill-available;
+            min-height: 44px;
+            margin-bottom: 15px;
         }
         button {
             -webkit-appearance: button;
@@ -832,7 +691,6 @@ class productVariation_widget_elementore  extends \Elementor\Widget_Base {
             display: flex;
             flex: 1 0 calc(50% - 12px);
             flex-wrap: wrap;
-            margin-left: 6px;
             width: 50%;
         }
         button {
@@ -940,6 +798,14 @@ class productVariation_widget_elementore  extends \Elementor\Widget_Base {
             border: #e2e2e2 1px solid;
             color: #000;
         }
+
+        .product-quantity-box .quantity a{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            color: black;
+        }
         .product-quantity-box label {
             margin-bottom: 0.5em;
         }
@@ -957,7 +823,6 @@ class productVariation_widget_elementore  extends \Elementor\Widget_Base {
         }
         .product-quantity-box .quantity {
             text-align: center;
-            padding: 6px 15px;
             width: 100%;
             height: 44px;
             border-radius: 0;
@@ -1272,66 +1137,6 @@ class productVariation_widget_elementore  extends \Elementor\Widget_Base {
         p {
         font-family: open sans-serif;
         }
-        /*! CSS Used fontfaces */
-        @font-face {
-            font-family: Brown-Pen;
-            src: url(//cdn.shopify.com/s/files/1/0550/1914/3277/t/2/assets/Brown_Pen.otf?v=103925917870457483621641682389);
-            font-style: normal
-        }
-
-        @font-face {
-            font-family: Brushwell;
-            src: url(//cdn.shopify.com/s/files/1/0550/1914/3277/t/2/assets/Brushwell.otf?v=114206075281421467321641682553);
-            font-style: normal
-        }
-
-        @font-face {
-            font-family: Cashew-Apple-Ale;
-            src: url(//cdn.shopify.com/s/files/1/0550/1914/3277/t/2/assets/Cashew_Apple_Ale.ttf?v=139984471599790151091641682602);
-            font-style: normal
-        }
-
-        @font-face {
-            font-family: Dolce-Vita;
-            src: url(//cdn.shopify.com/s/files/1/0550/1914/3277/t/2/assets/Dolce_Vita.ttf?v=82198270660012934781641682669);
-            font-style: normal
-        }
-
-        @font-face {
-            font-family: Houstiny;
-            src: url(//cdn.shopify.com/s/files/1/0550/1914/3277/t/2/assets/Houstiny.ttf?v=48773577169862198561641682747);
-            font-style: normal
-        }
-
-        @font-face {
-            font-family: julietta;
-            src: url(//cdn.shopify.com/s/files/1/0550/1914/3277/t/2/assets/julietta.ttf?v=177370251113908018831641682793);
-            font-style: normal
-        }
-
-        @font-face {
-            font-family: Neon_80s;
-            src: url(//cdn.shopify.com/s/files/1/0550/1914/3277/t/2/assets/Neon.ttf?v=18293467701084982221641682842);
-            font-style: normal
-        }
-
-        @font-face {
-            font-family: Rawkbrush;
-            src: url(//cdn.shopify.com/s/files/1/0550/1914/3277/t/2/assets/Rawkbrush.otf?v=92129209869317002421641684043);
-            font-style: normal
-        }
-
-        @font-face {
-            font-family: Rockness;
-            src: url(//cdn.shopify.com/s/files/1/0550/1914/3277/t/2/assets/rockness.otf?v=98822216953611196061641688686);
-            font-style: normal
-        }
-
-        @font-face {
-            font-family: Brittany Signature;
-            src: url(//cdn.shopify.com/s/files/1/0550/1914/3277/t/2/assets/BrittanySignature.ttf?v=169806659938974270951642017931);
-            font-style: normal
-        }
 
 
         .text__pos {
@@ -1408,14 +1213,13 @@ class productVariation_widget_elementore  extends \Elementor\Widget_Base {
         width: 30%;
         height: 30px;
         margin: 0;
-        background: #dee0ee;
+        background: #fff;
         text-decoration: none;
         text-align: center;
         line-height: 30px;
         }
         .quantity__minus:hover,
         .quantity__plus:hover {
-        background: #575b71;
         color: #fff;
         }
         .quantity__minus {
@@ -1436,6 +1240,7 @@ class productVariation_widget_elementore  extends \Elementor\Widget_Base {
         border-right: 2px solid #dee0ee;
         background: #fff;
         color: #8184a1;
+        pointer-events: none;
         }
         .quantity__minus:link,
         .quantity__plus:link {
@@ -1593,6 +1398,16 @@ class productVariation_widget_elementore  extends \Elementor\Widget_Base {
         }
         }
 
+        .user_email_con{
+            margin-left: 10px;
+        }
+
+        @media screen and (max-width: 1120px) {
+            .user_email_con {
+            margin-left: 0px;
+        }
+        }
+
         @media screen and (max-width: 880px) {
         .container .container__img-holder:nth-child(3n + 1) {
             margin-left: 16px;
@@ -1616,11 +1431,11 @@ class productVariation_widget_elementore  extends \Elementor\Widget_Base {
             -moz-appearance: none;
             text-indent: 0.01px;
             text-overflow: "";
+            color: #757575;
         }
 
         .user-info-one{
             display: flex;
-            margin-bottom:10px;
         }
 
         @media ( max-width: 1442px ){
@@ -1640,274 +1455,167 @@ class productVariation_widget_elementore  extends \Elementor\Widget_Base {
         <div class="clearfix frontpage_product_stagger--false">
             <div  class=" product_section1 ">
                 <div id="product_section1_image" class="product-images half wrap">
-                <div class="clearfix gallery-wrap gallery-arrows--true gallery-thumbnails--bottom">
-                    <div class="image_text--generator"> 
-                    <span class="spn__txt" id="split" data-binding="name" style="display: block; font-family: Brittany Signature; color: rgb(155, 41, 183); text-shadow: rgb(255, 255, 255) 0px 0px 10px, rgb(255, 255, 255) 0px 0px 20px, rgb(155, 41, 183) 0px 0px 30px, rgb(155, 41, 183) 0px 0px 40px, rgb(155, 41, 183) 0px 0px 50px, rgb(155, 41, 183) 0px 0px 60px, rgba(155, 41, 183, 0.5) 4.4px 4.4px 2.2px; text-align: right;">Hello</span>
-                    </div>
-                
-                    <div class="product_gallery_nav product_gallery_nav--bottom product-6699954208877-gallery-nav">
-                    <div class="col">
-                        <?php
-                        if( $settings['images_list'] ){
-                                
-                            $nos = 1;
-                            foreach($settings['images_list'] as $item){
-                                // print_r($item['images_cover']);
-                                // exit;
-                                ?>
-                                <div class="container__img-holder">
-                                <img src="<?php echo $item['images_cover']['url']; ?>" id="opt-<?php echo $nos; ?>" class="<?php echo $nos === 1 ? 'active' : '' ?>" >
-                                </div>
-                                <?php
-                                $nos++;
-                            }
-                            $nos = 1;
-                        }
-                        ?>
-                    </div>
-                    </div>
-                    <div class="img-popup">
-                        <div class="contain">
-                            <img src="" alt="Popup Image">
-                            <div class="close-btn">
-                                <div class="bar"></div>
-                                <div class="bar"></div>
-                            </div>
+                    <div class="clearfix gallery-wrap gallery-arrows--true gallery-thumbnails--bottom">
+                        <div class="image_text--generator"> 
+                            <span class="spn__txt" id="split" data-binding="name" style="display: block; font-family: Charmonman; color: rgb(255, 0, 102); text-shadow: rgb(255 255 255 / 70%) 0px 0px 10px, rgb(255 255 255 / 70%) 0px 0px 20px, rgb(255 0 102) 0px 0px 30px, rgb(255 0 102) 0px 0px 40px, rgb(255 0 102) 0px 0px 50px, rgb(255 0 102) 0px 0px 60px, rgb(255 0 102 / 50%) 4.4px 4.4px 2.2px; text-align: center;">Hello</span>
                         </div>
-                    </div>
-                </div>
-                
-                </div>
-                <div class="product-details half">
-                    <h1 class="product_name"> <a href="#"><?php echo $settings['widget_title'] ?></a></h1>
-                    <div class="feature_divider"></div>
-                    <div class="modal_price">
-                    <span id="p-value"></span>
-                    </div>
-                    <div class="description"> 
-                        <?php echo $settings['item_description'] ?>
-                    </div>
-            
-                
-                <div class="js-product_section product_section">
-                    <div class="neon-customizer--addElements fff">
-                        <div class="preview__data">
-                        <div class="select">
-                        <label>Size</label> 
-                        <div class="selector-wrapper">
-                            <select id="mySelect" onchange="myFunction()">
+                    
+                        <div class="product_gallery_nav product_gallery_nav--bottom product-6699954208877-gallery-nav">
+                            <div class="col">
                                 <?php
-                                if ( $settings['Size_list'] ) {
-                                    foreach($settings['Size_list'] as $item){
-                                        ?>
-                                        <option value="<?php echo $item['size_price']; ?>"><?php echo $item['size_title']; ?></option>
-                                        <?php
-                                    }
-                                }
-                                ?>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="wrap bg-cover-image">
-                        <div class="col">
-                            <label for="photos">Cover Image</label>
-                            <select id="photos">
-                            <?php
                                 if( $settings['images_list'] ){
+                                        
                                     $nos = 1;
-                                    foreach($settings['images_list'] as $key => $item){
+                                    foreach($settings['images_list'] as $item){
+                                        // print_r($item['images_cover']);
+                                        // exit;
                                         ?>
-                                        <option value="photo-<?php echo $nos; ?>" data-image="#opt-<?php echo $nos; ?>" <?php echo $nos === 1 ? 'selected' : ''; ?> ><?php echo $item['images_name']; ?></option>
+                                        <div class="container__img-holder">
+                                        <img src="<?php echo $item['images_cover']['url']; ?>" id="opt-<?php echo $nos; ?>" class="<?php echo $nos === 1 ? 'active' : '' ?>" >
+                                        </div>
                                         <?php
                                         $nos++;
                                     }
                                     $nos = 1;
                                 }
                                 ?>
-                            </select>      
+                            </div>
+                        </div>
+                        <div class="img-popup">
+                            <div class="contain">
+                                <img src="" alt="Popup Image">
+                                <div class="close-btn">
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </div>
+                <div class="product-details half">
 
-                            <div class="Custom__txt--value">
-                            <label for="eng__text" class="font__control">TEXT (15 LETTERS PER LINE - 4 LINES MAX)</label> 
-                            <textarea id="eng__text" name="properties[Your-Text]" data-model="name" maxlength="64" rows="4" class=""></textarea>
-                            <div class="neon_text_lines">
-                                <!-- <p class="txtfld">*If you want a logo or other design created in neon, please <a href="">upload your logo</a> and our Custom Design Team will be happy to help you!</p> -->
+                    <div class="description"> 
+                        <?php echo $settings['item_description'] ?>
+                    </div>
+
+                
+                <div class="js-product_section product_section">
+                    <div class="neon-customizer--addElements fff">
+                        <div class="preview__data">
+                            <!-- userinfo -->
+                            <div class="user-info user-info-one" style="">
+                                <div class="col" style="flex: 1;">
+                                    <label for="user_name">Name</label>
+                                    <input type="text" name="user_name" id="user_name" placeholder="" required style="width: -webkit-fill-available;">
+                                </div>
+                                <div class="col user_email_con" style="flex: 1;">
+                                    <label for="user_email">Email</label>
+                                    <input type="email" name="email" id="user_email" placeholder="" required style="width: -webkit-fill-available; ">
+                                </div>
                             </div>
+                            <div class="user-info" style="justify-content: space-between;">
+                                <div class="col">
+                                    <label for="event_date">Event Date</label>
+                                    <input type="date" name="event_date" id="event_date" placeholder="dd/mm/yyyy" required style="width: 100%; margin-bottom: 10px;height:min-content;">
+                                </div>
+                                <div class="col">
+                                    <label for="special_event">Special Request</label>
+                                    <input name="special sequet and evnet area" id="special_event" placeholder="Special Request" style="flex: 1;" >
+                                </div>
+                                
+                            </div>
+                            <!--background image -->
+                            <div class="wrap bg-cover-image">
+                                <div class="col">
+                                    <label for="photos">Backdrop Style</label>
+                                    <select id="photos">
+                                    <?php
+                                        if( $settings['images_list'] ){
+                                            $nos = 1;
+                                            foreach($settings['images_list'] as $key => $item){
+                                                ?>
+                                                <option value="photo-<?php echo $nos; ?>" data-image="#opt-<?php echo $nos; ?>" <?php echo $nos === 1 ? 'selected' : ''; ?> ><?php echo $item['images_name']; ?></option>
+                                                <?php
+                                                $nos++;
+                                            }
+                                            $nos = 1;
+                                        }
+                                        ?>
+                                    </select>      
+                                </div>
+                            </div>
+                            <!--custom text -->
+                            <div class="Custom__txt--value">
+                                <label for="eng__text" class="font__control">NEON TEXT</label> 
+                                <input id="eng__text" name="properties[Your-Text]" data-model="name" maxlength="64" class="" >
+                                <div class="neon_text_lines">
+                                    <!-- <p class="txtfld">*If you want a logo or other design created in neon, please <a href="">upload your logo</a> and our Custom Design Team will be happy to help you!</p> -->
+                                </div>
                             </div>
                             <!-- font-style -->
                             <div class="Fonts-family ">
-                            <div class="Text__style">
-                                <label for="clsFnt" class="font__control">STYLE</label> 
-                                <select id="clsFnt" onchange="preferedStyle()" name="properties[Font Style]">
-                                    <option value="Brittany Signature" style="font-family: Brittany Signature !important; font-size: 20px;">Brittany Signature</option>
-                                    <option value="Houstiny" style="font-family: Houstiny !important; font-size: 20px;">Houstiny</option>
-                                    <option value="Neon_80s" style="font-family: Neon_80s !important; font-size: 20px;">Neon 80s</option>
-                                    <option value="Brown-Pen" style="font-family: Brown-Pen !important; font-size: 20px;">Brown_Pen</option>
-                                    <option value="julietta" style="font-family: julietta !important; font-size: 20px;">Julietta</option>
-                                    <option value="Brushwell" style="font-family: Brushwell !important; font-size: 20px;">Brushwell</option>
-                                    <option value="Cashew-Apple-Ale" style="font-family: Cashew-Apple-Ale !important; font-size: 20px;">Cashew_Apple</option>
-                                    <option value="Rockness" style="font-family: Rockness !important; font-size: 20px;">Rockness</option>
-                                    <option value="Dolce-Vita" style="font-family: Dolce-Vita !important; font-size: 20px;">Dolce Vita</option>
-                                    <option value="Rawkbrush" style="font-family: Rawkbrush !important; font-size: 20px;">Rawk Brush</option>
-                                </select>
-                            </div>
-                            </div>
-                            <!-- not in use mounting-options-->
-                            <div class=" mounting-options">
-                            <div class="Text__style">
-                                <p id="m-value"></p>
-                                <label for="clsmo" class="font__control">Mounting Options</label> 
-                                <select id="clsmo" name="properties[Mounting Options]" onchange="myFunctionMounting()">
-                                    <?php
-                                    if( $settings['Mounting_list'] ){
-                                        foreach($settings['Mounting_list'] as $item){
-                                            ?>
-                                            <option value="<?php echo $item['mounting_title']; ?>"><?php echo $item['mounting_title']; ?></option>
-                                            <?php
-                                        }
-                                    }
-                                    ?>
-                                    
-                                </select>
-                            </div>
-                            </div>
-                            <!-- not in use Jacket-Option-->
-                            <div class="jacket-options">
-                            <div class="Text__style">
-                                <p id="J-value"></p>
-                                <label for="clsmoo" class="font__control">Jacket Option</label> 
-                                <select id="clsmoo" name="properties[Jacket Option:]"onchange="myFunctionJacket()">
-                                    <?php
-                                        if( $settings['jacket_list'] ){
-                                            foreach($settings['jacket_list'] as $item){
+                                <div class="Text__style">
+                                    <label for="clsFnt" class="font__control">FONT STYLE</label> 
+                                    <select id="clsFnt" onchange="preferedStyle()" name="properties[Font Style]">
+                                        <?php
+                                        if( $settings['fonts_list'] ){
+                                            foreach($settings['fonts_list'] as $item){
                                                 ?>
-                                                <option value="<?php echo $item['jacket_title']; ?>"><?php echo $item['jacket_title']; ?></option>
+                                                <option value="<?php echo $item['font_family_add']; ?>" style='font-family: "<?php echo $item['font_family_add']; ?>" !important; font-size: 20px;'><?php echo $item['font_family_add']; ?></option>
                                                 <?php
                                             }
                                         }
-                                    ?>
-                                </select>
-                            </div>
-                            </div>
-                    
-                            <!-- backing-stylee option-->
-                            <div class="backing-style">
-                            <div class="Text__style">
-                                <p id="B-value"></p>
-                                <label for="clsmooo" class="font__control">Backing Style Option</label> 
-                                <select id="clsmooo" onchange="myFunctionBackingStyle()">
-                                    <?php
-                                            if( $settings['backing_list'] ){
-                                                foreach($settings['backing_list'] as $item){
-                                                    ?>
-                                                    <option value="<?php echo $item['backing_title']; ?>"><?php echo $item['backing_title']; ?></option>
-
-                                                    <?php
-                                                }
-                                            }
-                                    ?>
-                                    
-                                </select>
-                            </div>
-                            </div>
-                        <!-- Backing style -->
-                            <div class="neone-custom__font">
-                            <div class="Text__style">
-                                <p id="BS-value"></p>
-                                <label for="clsmoooo" class="font__control">Backing Style</label> 
-                                <select id="clsmoooo"onchange="myFunctionBacking()">
-                                     <?php
-                                        if( $settings['shape_list'] ){
-                                            foreach($settings['shape_list'] as $item){
-                                                ?>
-                                                <option value="<?php echo $item['shape_title']; ?>"><?php echo $item['shape_title']; ?></option>
-                                                <?php
-                                            }
-                                        }
-                                    ?>
-                                </select>
-                            </div>
+                                        ?>
+            
+                                    </select>
+                                </div>
                             </div>
             
                             <!-- text-color -->
                             <div class="neon-customizer">
-                            <div class="Text__color">
-                                <label for="clss" class="font__control">TEXT COLOR</label> 
-                                <select id="clss" onchange="preferedBrowser()" name="properties[Font Colors]">
-                                    <?php
-                                    
-                                        if( $settings['color_list'] ){
-                                            foreach($settings['color_list'] as $item){
-                                                ?>
-                                                <option value="<?php echo $item['color_code']; ?>"><?php echo $item['color_title']; ?></option>
-                                                <?php
+                                <div class="Text__color">
+                                    <label for="clss" class="font__control">TEXT COLOR</label> 
+                                    <select id="clss" onchange="preferedBrowser()" name="properties[Font Colors]">
+                                        <?php
+                                        
+                                            if( $settings['color_list'] ){
+                                                foreach($settings['color_list'] as $item){
+                                                    ?>
+                                                    <option value="<?php echo $item['color_code']; ?>"><?php echo $item['color_title']; ?></option>
+                                                    <?php
+                                                }
                                             }
-                                        }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="textPr__ps">
-                                <label for="selectTextAlign">ALIGNMENT</label> 
-                                <div class="text__pos" id="f1">
-                                    <div class="left__box">
-                                        <input type="radio" id="radio1" name="properties[Text Position]" value="left"> 
-                                        <label for="radio1" style="background: rgb(255, 255, 255);">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                                            <path d="M 3 7 L 3 9 L 29 9 L 29 7 Z M 3 11 L 3 13 L 21 13 L 21 11 Z M 3 15 L 3 17 L 29 17 L 29 15 Z M 3 19 L 3 21 L 21 21 L 21 19 Z M 3 23 L 3 25 L 29 25 L 29 23 Z"></path>
-                                        </svg>
-                                        </label>
-                                    </div>
-                                    <div class="center__box">
-                                        <input type="radio" id="radio2" name="properties[Text Position]" value="center" style="color: rgb(255, 255, 255);"> 
-                                        <label for="radio2" style="background: rgb(255, 255, 255);">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                                            <path d="M 3 7 L 3 9 L 29 9 L 29 7 Z M 7 11 L 7 13 L 25 13 L 25 11 Z M 3 15 L 3 17 L 29 17 L 29 15 Z M 7 19 L 7 21 L 25 21 L 25 19 Z M 3 23 L 3 25 L 29 25 L 29 23 Z"></path>
-                                        </svg>
-                                        </label>
-                                    </div>
-                                    <div class="right__box">
-                                        <input type="radio" id="radio3" name="properties[Text Position]" value="right" style="color: rgb(255, 255, 255);" checked> 
-                                        <label for="radio3" >
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                                            <path d="M 3 7 L 3 9 L 29 9 L 29 7 Z M 11 11 L 11 13 L 29 13 L 29 11 Z M 3 15 L 3 17 L 29 17 L 29 15 Z M 11 19 L 11 21 L 29 21 L 29 19 Z M 3 23 L 3 25 L 29 25 L 29 23 Z"></path>
-                                        </svg>
-                                        </label>
-                                    </div>
+                                        ?>
+                                    </select>
                                 </div>
                             </div>
+
+                            <!-- purchase-qty -->
+                            <div class="purchase-details">
+                                <div class="purchase-details__quantity product-quantity-box"> 
+                                    <label for="quantity">Font Size (px)</label>
+                                    <div class="quantity">
+                                        <a href="#" class="quantity__minus"><span>-</span></a>
+                                        <input name="quantity" type="text" class="quantity__input" value="42">
+                                        <a href="#" class="quantity__plus"><span>+</span></a>
+                                    </div> 
+                                </div>
                             </div>
-                        </div>
                     </div>
-                    <!-- userinfo -->
-                    <div class="user-info user-info-one" style="">
-                        <input type="text" name="user_name" id="user_name" placeholder="Name" required style="flex: 1;">
-                        <input type="email" name="email" id="user_email" placeholder="Email" required style="flex: 1; margin-left: 10px;">
-                    </div>
-                    <div class="user-info" style="justify-content: space-between; margin-bottom:10px;">
-                        <input type="date" name="event_date" id="event_date" placeholder="dd/mm/yyyy" required style="width: 100%; margin-bottom: 10px;height:min-content;">
-                        <textarea name="special sequet and evnet area" id="special_event" cols="20" rows="" placeholder="Special Request" style="flex: 1;min-height: 63px;"></textarea>
-                    </div>
+
                     <input type="hidden" name="screenshot_image" id="screenshot_image">
                     
                     <!-- purchase-qty -->
                     <div class="purchase-details">
-                        <div class="purchase-details__quantity product-quantity-box"> 
-                            <label for="quantity">Qty</label>
-                            <div class="quantity">
-                                <a href="#" class="quantity__minus"><span>-</span></a>
-                                <input name="quantity" type="text" class="quantity__input" value="1">
-                                <a href="#" class="quantity__plus"><span>+</span></a>
-                            </div> 
-                        </div>
                         <!-- add to cart -->
                         <div class="purchase-details__buttons purchase-details__spb--false">
-                            <button type="button" name="add" class="add_to_cart" data-label="Add to Cart" onClick="verifyFields()">Send Us</button>
+                            <button type="button" name="add" class="add_to_cart" data-label="Add to Cart" onClick="verifyFields()"><?php echo $settings['submit_button'] ?></button>
                         </div>
                     </div>
 
                     <div class="spinner d-none"></div>
-                    <div class="notice d-none" style="text-align:center; font-size: 20px; font-weight:bold;" >Email Sent! Thank You!</div>
+                    <div class="notice d-none" style="text-align:center; font-size: 20px; font-weight:bold; color: green;" >Email Sent! Thank You!</div>
+                    <div class="email_name_error d-none" style="text-align:center; font-size: 20px; font-weight:bold; color: red;" >Make Sure Name and Email Fields are not Empty!</div>
                 </div>
                 </div>
             </div>
@@ -1964,36 +1672,10 @@ class productVariation_widget_elementore  extends \Elementor\Widget_Base {
             valfClr.style.textShadow = "#ffffff 0px 0px 10px, #ffffff 0px 0px 20px, "+valf+" 0px 0px 30px, "+valf+" 0px 0px 40px, "+valf+" 0px 0px 50px, "+valf+" 0px 0px 60px, "+valf+"80 4.4px 4.4px 2.2px";
       
         }
-
-        var valfClr = document.querySelector('.spn__txt');
-         var valfrad1 =document.querySelector("#radio1");
-          var valfrad2 =document.querySelector("#radio2");
-          var valfrad3 =document.querySelector("#radio3");
-          var valble = document.querySelector('.left__box label');
-          valfrad1.addEventListener("click", function(){
-            valfClr.style.textAlign = "left";
-            valfrad1.style.color = "#fff";
-            valble.style.background = "<?php echo $settings['brand_color']?>";
-            document.querySelector('.center__box label').style.background = "#fff";
-            document.querySelector('.right__box label').style.background = "#fff";
-          })
-          valfrad2.addEventListener("click", function(){
-            valfClr.style.textAlign = "center";
-            valfrad2.style.color = "#fff";
-            valble.style.background = "#fff";
-            document.querySelector('.right__box label').style.background = "#fff";
-            document.querySelector('.center__box label').style.background = "<?php echo $settings['brand_color']?>";
-          })
-          valfrad3.addEventListener("click", function(){
-            valfClr.style.textAlign = "right";
-            valfrad3.style.color = "#fff";
-            valble.style.background = "#fff";
-            document.querySelector('.center__box label').style.background = "#fff";
-            document.querySelector('.right__box label').style.background = "<?php echo $settings['brand_color']?>";
-          })   
+  
 
 
-        // 
+        // Fonts Option
         function preferedStyle(){
           var valfont = document.querySelector('#clsFnt').value;
           var valfontxt = document.querySelector('.spn__txt');
@@ -2026,54 +1708,14 @@ class productVariation_widget_elementore  extends \Elementor\Widget_Base {
        document.getElementById('split').innerHTML = str;
         }
       };
-      // getting options value of select
-      function myFunction() {
-      var myVal = document.getElementById("mySelect").value;
-      document.getElementById("p-value").innerHTML =  myVal;
-      }
-      function myFunctionMounting() {
-      var myVal = document.getElementById("clsmo").value;
-      document.getElementById("m-value").innerHTML =  myVal;
-      }
-      function myFunctionJacket() {
-      var myVal = document.getElementById("clsmoo").value;
-      document.getElementById("J-value").innerHTML =  myVal;
-      }
-      function myFunctionBackingStyle() {
-      var myVal = document.getElementById("clsmooo").value;
-      document.getElementById("B-value").innerHTML =  myVal;
-      }
-      function myFunctionBacking() {
-      var myVal = document.getElementById("clsmoooo").value;
-      document.getElementById("BS-value").innerHTML =  myVal;
-      }
+   
       // changeing cover images
       jQuery("#photos").change(function () {
       _data_image = jQuery("option:selected", this).data("image");
       jQuery(".active").removeClass("active");
       jQuery(_data_image).addClass("active");
       });
-      // quantity operator
-      jQuery(document).ready(function() {
-      const minus = jQuery('.quantity__minus');
-      const plus = jQuery('.quantity__plus');
-      const input = jQuery('.quantity__input');
-      minus.click(function(e) {
-         e.preventDefault();
-         var value = input.val();
-         if (value > 1) {
-            value--;
-         }
-         input.val(value);
-      });
-      
-      plus.click(function(e) {
-         e.preventDefault();
-         var value = input.val();
-         value++;
-         input.val(value);
-      })
-      });
+  
       // image popup card
       jQuery(document).ready(function() {
 
@@ -2104,6 +1746,31 @@ class productVariation_widget_elementore  extends \Elementor\Widget_Base {
 
    });
 
+   // quantity operator
+   jQuery(document).ready(function() {
+      const minus = jQuery('.quantity__minus');
+      const span_color = jQuery('.image_text--generator span');
+      const plus = jQuery('.quantity__plus');
+      const input = jQuery('.quantity__input');
+      minus.click(function(e) {
+         e.preventDefault();
+         var value = input.val();
+         if (value > 1) {
+            value--;
+         }
+         input.val(value);
+         span_color.css("font-size", value + "px");
+      });
+      
+      plus.click(function(e) {
+         e.preventDefault();
+         var value = input.val();
+         value++;
+         input.val(value);
+         span_color.css("font-size", value + "px");
+      })
+      });
+
     // getting all the values     
 
    function verifyFields() {
@@ -2113,21 +1780,15 @@ class productVariation_widget_elementore  extends \Elementor\Widget_Base {
             }).then(canvas => {
             var imageData = canvas.toDataURL();
             document.getElementById("screenshot_image").setAttribute("value", imageData);
-            var sizevalue = document.querySelector("#mySelect").value;
             var engText = document.querySelector("#eng__text").value;
             var styleValue = document.querySelector("#clsFnt").value;
-            var mountingValue = document.querySelector("#clsmo").value;
-            var jacketValue = document.querySelector("#clsmoo").value;
-            var backingstylevalue = document.querySelector("#clsmooo").value;
-            var shapeValue = document.querySelector("#clsmoooo").value;
             var textcolorvalue = document.querySelector("#clss").value;
-            var quantityvalue = document.querySelector(".quantity__input").value;
             var userName = document.querySelector("#user_name");
             var userEmail = document.querySelector("#user_email");
-            var allignmentoption = document.querySelector('input[name="properties[Text Position]"]:checked').value;
             var dateEvent = document.querySelector('#event_date').value;
             var specialEventReques = document.querySelector('#special_event').value;
             var screenshotImg = document.getElementById("screenshot_image").value;
+            var fontSize = document.querySelector(".quantity__input").value;
 
             
             if(userName.value === '' || userEmail.value === ''){
@@ -2138,6 +1799,7 @@ class productVariation_widget_elementore  extends \Elementor\Widget_Base {
                     userEmail.style.borderColor = 'red';
                 }
                 document.querySelector('.spinner').classList.add('d-none');
+                document.querySelector('.email_name_error').classList.remove('d-none');
                 return;
             }
 
@@ -2151,24 +1813,22 @@ class productVariation_widget_elementore  extends \Elementor\Widget_Base {
                 data: { 
                     action: 'data_send_toEmail',
                     security: '<?php echo wp_create_nonce( 'form_submitNeon' ); ?>',
-                    sizevalue: sizevalue, 
+                    emailTo: '<?php echo $settings['email_to'] ?>', 
+                    emailFrom: '<?php echo $settings['email_from'] ?>', 
                     engText: engText, 
                     styleValue: styleValue, 
-                    mountingValue: mountingValue, 
-                    jacketValue: jacketValue, 
-                    backingstylevalue: backingstylevalue, 
-                    shapeValue: shapeValue, 
                     textcolorvalue: textcolorvalue, 
-                    quantityvalue: quantityvalue, 
                     userName: userName.value, 
                     userEmail: userEmail.value,
                     dateEvent: dateEvent,
+                    fontSize: fontSize,
                     specialEventReques: specialEventReques,
-                    allignmentoption: allignmentoption, 
                     canvas2: screenshotImg, 
+                    
                 },
                 success: function(data) {
                     if(data === "email sent"){
+                        document.querySelector('.email_name_error').classList.add('d-none');
                         document.querySelector('.spinner').classList.add('d-none');
                         document.querySelector('.notice').classList.remove('d-none');
 

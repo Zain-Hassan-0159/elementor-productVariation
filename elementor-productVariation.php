@@ -37,23 +37,18 @@ add_action('wp_ajax_nopriv_data_send_toEmail', 'data_send_toEmail_callback');
 
 
 function data_send_toEmail_callback(){
-    $sizevalue  		=	$_POST['sizevalue'];
     $engText  			=	$_POST['engText'];
     $styleValue     	=	$_POST['styleValue'];
-    $mountingValue  	=	$_POST['mountingValue'];
-    $jacketValue  		=	$_POST['jacketValue'];
-    $backingstylevalue  =	$_POST['backingstylevalue'];
-    $shapeValue      	=	$_POST['shapeValue'];
-    $quantityvalue   	=	$_POST['quantityvalue'];
     $textcolorvalue   	=	$_POST['textcolorvalue'];
     $userName        	=	$_POST['userName'];
     $userEmail       	=	$_POST['userEmail'];
     $dateEvent       	=	$_POST['dateEvent'];
     $specialEventReques =	$_POST['specialEventReques'];
     $allignmentoption	=	$_POST['allignmentoption'];
+    $fontSize	        =	$_POST['fontSize'];
     $canvas				=	$_POST['canvas2'];
-    $from           	= 	'iluvphotobooths@gmail.com'; 
-    $to           	    = 	'iluvphotobooths@gmail.com'; 
+    $to           	    = 	$_POST['emailTo'] === '' || !is_email($_POST['emailTo']) ? get_option('admin_email') : $_POST['emailTo']; 
+    $from           	=   $_POST['emailFrom'] === '' || !is_email($_POST['emailFrom']) ? $userEmail : $_POST['emailFrom']; 
 
 
    
@@ -88,14 +83,9 @@ function data_send_toEmail_callback(){
                     <tr><td>Message: </td><td>' . $specialEventReques . '</td></tr>
                     <tr><td>Text Alignment: </td><td>' . $allignmentoption . '</td></tr>
                     <tr><td>Text on Image: </td><td>' . $engText . '</td></tr>
+                    <tr><td>Font Size (px): </td><td>' . $fontSize . '</td></tr>
                     <tr><td>Text Color: </td><td>' . $textcolorvalue . '</td></tr>
                     <tr><td>Font: </td><td>' . $styleValue . '</td></tr>
-                    <tr><td>Mounting Option: </td><td>' . $mountingValue . '</td></tr>
-                    <tr><td>Jacket Option: </td><td>' . $jacketValue . '</td></tr>
-                    <tr><td>Backing Style Option: </td><td>' . $backingstylevalue . '</td></tr>
-                    <tr><td>Backing Shape Option: </td><td>' . $shapeValue . '</td></tr>
-                    <tr><td>Quantity: </td><td>' . $quantityvalue . '</td></tr>
-                    <tr><td>Size: </td><td>' . $sizevalue . '</td></tr>
                 </table>
             </body>
         </html>';
